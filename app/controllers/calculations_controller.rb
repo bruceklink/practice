@@ -9,9 +9,9 @@ class CalculationsController < ApplicationController
   end
 
   def pmt
-  	@rate = params["interest_rate"].to_i
-  	@num = params["number_of_payments"].to_i
-  	@pv = params["present_value"].to_i
-  	@payment = @pv*@rate/1200*(1+(@rate/1200))**@num/(1+@rate/1200)**@num-1
+  	@rate = params["interest_rate"].to_f
+  	@num = params["number_of_payments"].to_f
+  	@pv = params["present_value"].to_f
+  	@payment = (@pv*@rate/1200*((1+(@rate/1200))**@num))/(((1+(@rate/1200))**@num)-1)
   end
 end
